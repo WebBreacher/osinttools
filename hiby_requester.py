@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 
+# Written by Micah Hoffman
+# For the SANS OSINT course SEC487
+#
 # Script to read email addresses from a file and
 # look them up in HaveIBeenPwned.com using API
 
