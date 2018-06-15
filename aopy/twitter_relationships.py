@@ -54,7 +54,7 @@ def get_all_friends_followers(username, relationship_type):
 
         account_list.extend(accounts['ids'])
 
-        print '[*] Downloaded %d of type %s' % (len(account_list), relationship_type)
+        print('[*] Downloaded %d of type %s' % (len(account_list), relationship_type))
 
         next_cursor = accounts.get('next_cursor', None)
 
@@ -66,8 +66,8 @@ username = 'jms_dot_py'
 friends   = get_all_friends_followers(username, 'friends')
 followers = get_all_friends_followers(username, 'followers')
 
-print '[**] Retrieved %d friends' % len(friends)
-print '[**] Retrieved %d followers' % len(followers)
+print('[**] Retrieved %d friends' % len(friends))
+print('[**] Retrieved %d followers' % len(followers))
 
 snapshot_timestamp = time.time()
 
@@ -77,7 +77,7 @@ with open(friends_file, 'w') as fd:
     for friend in friends:
         fd.write('%d\n' % friend)
 
-print '[!] Stored friends in %s' % friends_file
+print('[!] Stored friends in %s' % friends_file)
 
 # store the followers
 followers_file = '%s-%f-followers.txt' % (username, snapshot_timestamp)
@@ -85,4 +85,4 @@ with open(followers_file, 'w') as fd:
     for follower in followers:
         fd.write('%d\n' % follower)
 
-print '[!] Stored followers in %s' % followers_file
+print('[!] Stored followers in %s' % followers_file)
