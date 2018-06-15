@@ -3,10 +3,10 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
-query  = "sec487"
+query  = 'webbreacher'
 
-driver = webdriver.Chrome(executable_path="c:/Users/micah/chromedriver/chromedriver.exe")
-url    = "http://www.google.com"
+driver = webdriver.Chrome(executable_path='c:/Users/micah/chromedriver/chromedriver.exe')
+url    = 'http://www.google.com'
 driver.get(url)
 
 time.sleep(1)
