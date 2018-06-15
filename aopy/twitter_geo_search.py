@@ -6,6 +6,11 @@ import requests
 import time
 
 
+logfile   = 'rockville.csv'
+latitude  = 39.106011097700915
+longitude = -77.09330247246095
+radius    = 2
+
 #
 # Send request to Twitter API
 #
@@ -58,7 +63,7 @@ def geo_search(latitude, longitude, radius):
 
         geo_tweet_list.extend(tweet_list['statuses'])
 
-        print '[*] Retrieved: %d Tweets (max_id: %d)' % (len(geo_tweet_list), max_id)
+        print('[*] Retrieved: %d Tweets (max_id: %d)' % (len(geo_tweet_list), max_id))
 
         # sleep to handle rate limiting
         time.sleep(3)
@@ -74,9 +79,9 @@ def log_results(tweets, logfile):
 
     field_names = ['latitude', 'longitude', 'date', 'user', 'text']
 
-    with open('locations.csv', 'wb') as fd:
+    with open(logfile, 'w', newline='') as fd:
 
-        writer = csv.DictWriter(fd, field_names)
+        writer = csv.DictWriter(fd, fieldnames=field_names)
 
         writer.writeheader()
 
@@ -111,17 +116,12 @@ def log_results(tweets, logfile):
                 row['text'].decode('utf-8')
             )
 
-            print output
+            print(output)
 
             writer.writerow(row)
 
     return
 
-
-logfile   = 'edmontonhomicide.csv'
-latitude  = 53.562628
-longitude = -113.536803
-radius    = 1
 
 tweets = geo_search(latitude, longitude, radius)
 
