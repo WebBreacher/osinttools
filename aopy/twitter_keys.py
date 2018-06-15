@@ -1,3 +1,8 @@
+'''
+Script from Justin Seitz's https://learn.automatingosint.com/ Course
+and Modified for Python 3 by Micah Hoffman
+'''
+
 from requests_oauthlib import OAuth1
 
 # authentication pieces
