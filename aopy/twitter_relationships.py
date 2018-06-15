@@ -24,6 +24,8 @@ def send_request(screen_name, relationship_type, next_cursor=None):
 
     time.sleep(3)
 
+    print(response.text)
+
     if response.status_code == 200:
 
         result = json.loads(response.content)
@@ -61,7 +63,7 @@ def get_all_friends_followers(username, relationship_type):
     return account_list
 
 
-username = 'jms_dot_py'
+username = 'webbreacher'
 
 friends   = get_all_friends_followers(username, 'friends')
 followers = get_all_friends_followers(username, 'followers')

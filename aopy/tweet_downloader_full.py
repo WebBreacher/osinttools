@@ -57,7 +57,7 @@ def download_all_tweets(username):
         # set max_id to latest max_id we retrieved, minus 1
         max_id = oldest_tweet['id'] - 1
 
-        print '[*] Retrieved: %d Tweets (max_id: %d)' % (len(full_tweet_list), max_id)
+        print('[*] Retrieved: %d Tweets (max_id: %d)' % (len(full_tweet_list), max_id))
 
         # sleep to handle rate limiting
         time.sleep(3)
@@ -71,4 +71,4 @@ full_tweet_list = download_all_tweets('jms_dot_py')
 # loop over each Tweet and print the date and text
 for tweet in full_tweet_list:
 
-    print '%s\t%s' % (tweet['created_at'], tweet['text'])
+    print('%s\t%s' % (tweet['created_at'], tweet['text']))
