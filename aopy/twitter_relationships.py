@@ -5,6 +5,9 @@ import requests
 import time
 
 
+username = 'jms_dot_py'
+
+
 #
 # Main Twitter API function for sending requests
 #
@@ -23,8 +26,6 @@ def send_request(screen_name, relationship_type, next_cursor=None):
     response = requests.get(api_url, params=params, auth=oauth)
 
     time.sleep(3)
-
-    print(response.text)
 
     if response.status_code == 200:
 
@@ -63,7 +64,9 @@ def get_all_friends_followers(username, relationship_type):
     return account_list
 
 
-username = 'webbreacher'
+#
+# MAIN
+#
 
 friends   = get_all_friends_followers(username, 'friends')
 followers = get_all_friends_followers(username, 'followers')
