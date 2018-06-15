@@ -34,7 +34,7 @@ def send_request(screen_name, relationship_type, next_cursor=None):
 
     response = requests.get(api_url, params=params, auth=oauth)
 
-    time.sleep(3)
+    #time.sleep(3)
 
     if response.status_code == 200:
 
@@ -50,7 +50,7 @@ def send_request(screen_name, relationship_type, next_cursor=None):
 #
 def id_lookup(id, next_cursor=None):
 
-    url = 'https://api.twitter.com/1.1/users/show.json?user_id={}'.format(id)
+    url = 'https://api.twitter.com/1.1/users/show.json?user_id='+str(id)
     response = requests.get(url, auth=oauth)
 
     #time.sleep(3)
@@ -59,9 +59,9 @@ def id_lookup(id, next_cursor=None):
 
         result = json.loads(response.content)
         #acct = '{} ({}, {})'.format(response['name'], response['screen_name'], response['id'])
-        print('     Looked up {} and resolved to {}'.format(id,result['name']))
-        return result['name']
-
+        #print('     Looked up {} and resolved to {}'.format(id,result['screen_name']))
+        return result['screen_name']
+    print(response.status_code)
     return None
 
 #
@@ -100,7 +100,7 @@ def get_all_friends_followers(username, relationship_type):
 graph = nx.DiGraph()
 
 # Get friends (returns ID # in list) 
-friends   = get_all_friends_followers(username, 'friends')
+friends = get_all_friends_followers(username, 'friends')
 print('[*] Retrieved {} friends for {}'.format(len(friends),username))
 
 
@@ -108,8 +108,10 @@ print('[*] Converting {} friend IDs to screen names'.format(username))
 # Convert each friend ID to a screen_name
 friend_names_list = []
 for friend_id in friends:
-    if friend_id > 0:
-        friend_names_list.extend(id_lookup(friend_id))
+    if friend_id is not None:
+        f = id_lookup(friend_id)
+        print(friend_id,f)
+        #friend_names_list.extend(id_lookup(friend_id))
     else:
         continue
 
@@ -119,27 +121,28 @@ for friend in friend_names_list:
     graph.add_edge(username,friend)
 
 
-'''# Get followers (returns ID # in list) 
-followers   = get_all_friends_followers(username, 'followers')
+# Get followers (returns ID # in list) 
+followers = get_all_friends_followers(username, 'followers')
 print('[*] Retrieved {} followers for {}'.format(len(followers),username))
 
 print('[*] Converting {} follower IDs to screen names'.format(username))
 # Convert each follower ID to a screen_name
 follower_names_list = []
 for follower_id in followers:
-    follower_names_list.extend(id_lookup(follower_id))
-    
+    if follower_id > 0:
+        follower_names_list.extend(id_lookup(follower_id))
+    else:
+        continue
+
+
 print('[*] Connecting {} followers to username'.format(username))
 # Connect username to named followers
-connect_people(username, follower_names_list)
 for follower in follower_names_list:
-    graph.add_edge(username,follower)'''
-    
-
-
+    graph.add_edge(follower,username)
 
 
 # Write GEXF file
 print('[*] Writing outfile')
 nx.write_gexf(graph,"outfile.gexf")
-	
+
+print('[***] Finished')
