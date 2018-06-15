@@ -19,11 +19,11 @@ class StdOutListener(StreamListener):
         tweet = json.loads(data)
 
         # log the Tweet to a file
-        with codecs.open('tweets.log', 'ab', encoding='utf-8') as fd:
-            fd.write('%s\r\n' % tweet)
+        '''with codecs.open('tweets.log', 'ab', encoding='utf-8') as fd:
+            fd.write('%s\r\n' % tweet)'''
 
         # print the tweet out
-        print(tweet)
+        print(tweet['text'], tweet['user']['screen_name'])
 
         return True
 
@@ -41,4 +41,5 @@ auth.set_access_token(token, token_secret)
 stream = Stream(auth, l)
 
 # These IDs re for CNNBreaking and BBCWorld Twitter accounts
-stream.filter(follow=['428333','742143'])
+#stream.filter(follow=['428333','742143'])
+stream.filter(track=['osint','open source intel','sec487'])
