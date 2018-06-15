@@ -1,6 +1,9 @@
 '''
 Script from Justin Seitz's https://learn.automatingosint.com/ Course
 and Modified for Python 3 by Micah Hoffman
+
+this recursively grabs that followers from a single person
+
 '''
 
 from twitter_keys import *
@@ -8,13 +11,14 @@ from twitter_keys import *
 import json
 import requests
 import time
+import networkx as nx
 
-
+recurse = 2 
 username = 'webbreacher'
 
 
 #
-# Main Twitter API function for sending requests
+# Main Twitter API function for getting friends and followers from a username
 #
 def send_request(screen_name, relationship_type, next_cursor=None):
 
@@ -40,6 +44,25 @@ def send_request(screen_name, relationship_type, next_cursor=None):
 
     return None
 
+
+#
+# Function that looks up a Twitter ID and returns Name (Screen_name)
+#
+def id_lookup(id, next_cursor=None):
+
+    url = 'https://api.twitter.com/1.1/users/show.json?user_id={}'.format(id)
+    response = requests.get(url, auth=oauth)
+
+    #time.sleep(3)
+
+    if response.status_code == 200:
+
+        result = json.loads(response.content)
+        #acct = '{} ({}, {})'.format(response['name'], response['screen_name'], response['id'])
+        print('     Looked up {} and resolved to {}'.format(id,result['name']))
+        return result['name']
+
+    return None
 
 #
 # Function that contains the logic for paging through results
@@ -69,30 +92,55 @@ def get_all_friends_followers(username, relationship_type):
     return account_list
 
 
+
 #
 # MAIN
 #
 
+# create the graph object
+graph = nx.DiGraph()
+
+# Get friends (returns ID # in list) 
 friends   = get_all_friends_followers(username, 'friends')
-followers = get_all_friends_followers(username, 'followers')
+print('[*] Retrieved {} friends for {}'.format(len(friends),username))
 
-print('[**] Retrieved %d friends' % len(friends))
-print('[**] Retrieved %d followers' % len(followers))
 
-snapshot_timestamp = time.time()
+print('[*] Converting {} friend IDs to screen names'.format(username))
+# Convert each friend ID to a screen_name
+friend_names_list = []
+for friend_id in friends:
+    if friend_id > 0:
+        friend_names_list.extend(id_lookup(friend_id))
+    else:
+        continue
 
-# store the friends
-friends_file = '%s-%f-friends.txt' % (username, snapshot_timestamp)
-with open(friends_file, 'w') as fd:
-    for friend in friends:
-        fd.write('%d\n' % friend)
+print('[*] Connecting {} friends to username'.format(username))
+# Connect username to named friends
+for friend in friend_names_list:
+    graph.add_edge(username,friend)
 
-print('[!] Stored friends in %s' % friends_file)
 
-# store the followers
-followers_file = '%s-%f-followers.txt' % (username, snapshot_timestamp)
-with open(followers_file, 'w') as fd:
-    for follower in followers:
-        fd.write('%d\n' % follower)
+'''# Get followers (returns ID # in list) 
+followers   = get_all_friends_followers(username, 'followers')
+print('[*] Retrieved {} followers for {}'.format(len(followers),username))
 
-print('[!] Stored followers in %s' % followers_file)
+print('[*] Converting {} follower IDs to screen names'.format(username))
+# Convert each follower ID to a screen_name
+follower_names_list = []
+for follower_id in followers:
+    follower_names_list.extend(id_lookup(follower_id))
+    
+print('[*] Connecting {} followers to username'.format(username))
+# Connect username to named followers
+connect_people(username, follower_names_list)
+for follower in follower_names_list:
+    graph.add_edge(username,follower)'''
+    
+
+
+
+
+# Write GEXF file
+print('[*] Writing outfile')
+nx.write_gexf(graph,"outfile.gexf")
+	
