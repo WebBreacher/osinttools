@@ -10,6 +10,9 @@ import requests
 import sys
 import time
 
+#Disables SSL warning
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 # If a command line argument was submitted, use it for email list
 try:
