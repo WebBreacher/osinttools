@@ -1,1 +1,0 @@
-Scripts in this directory are from or were inspired by [Justin Seitz's](https://twitter.com/jms_dot_py) excellent Python [Automating Osint](https://learn.automatingosint.com/) Master course. If you like the scripts and Python, go check out his site and trainings. 
