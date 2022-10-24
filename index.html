@@ -4,48 +4,65 @@
      Example: file://bitmoji.html?user=99792039934&version=5
 -->
 <body>
+
+    <p>Sample Bimoji ID value: 99792039934</p>
+    <p>Version: 5</p>
+    <br>
+    <br>
+
+    <ul>
+        <li>Replace the default value with your Bitmoji ID: <input type="number" placeholder="99792039934" id="bid"></li>
+        <li>Replace the default value with your version value: <input type="number" id="bversion" placeholder="5"></li>
+    </ul>
+    <button type="button" onclick="getInputValue();">Grab Images!</button>
+
+      <hr width="3">
+
     <style>
-    * {
-      margin: 0;
-      padding:0;
-    }
-    .avatar {
-      width: 300px;
-      display: inline-block;
-    }
+        * {
+            margin: 0;
+            padding:0;
+        }
+        .avatar {
+            width: 300px;
+            display: inline-block;
+        }
     </style>
 
     <div id="all"></div>
 
     <script type="text/javascript" style="display: none;">
-    var all = document.querySelector("#all");
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const userID = urlParams.get('user');
-    const version = urlParams.get('version');
+        function getInputValue(){
+            // Selecting the input element and get its value
+            var userID = document.getElementById("bid").value;
+            var version = document.getElementById("bversion").value;
 
-    function nextImg(i) {
-      var container = document.createElement('div');
-      container.classList.add("avatar");
-      var img = document.createElement('img');
-      var id  = userID+"_"+i+"-s"+version;
-      img.src = "https://render.bitstrips.com/v2/cpanel/10220640-" + id + "-v1.png?transparent=1&width=300";
-      container.appendChild(img);
+           var all = document.querySelector("#all");
+            const queryString = window.location.search;
 
-      var p = document.createElement('p');
-      p.innerText = id;
-      container.appendChild(p);
+            function nextImg(i) {
+                var container = document.createElement('div');
+                container.classList.add("avatar");
+                var img = document.createElement('img');
+                var id  = userID+"_"+i+"-s"+version;
+                img.src = "https://render.bitstrips.com/v2/cpanel/10220640-" + id + "-v1.png?transparent=1&width=300";
+                container.appendChild(img);
 
-      all.appendChild(container);
-      console.log(i)
-      if (i==20) {
-          return;
-      } else {
-        setTimeout(() => nextImg(i+1), 500);
-         }
-    }
+                var p = document.createElement('p');
+                p.innerText = id;
+                container.appendChild(p);
 
-    nextImg(0);
+                all.appendChild(container);
+                console.log(i)
+                if (i==20) {
+                    return;
+                } else {
+                    setTimeout(() => nextImg(i+1), 500);
+                }
+            }
+
+            nextImg(0);
+        }
     </script>
 
     </body>
