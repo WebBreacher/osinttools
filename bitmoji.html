@@ -1,0 +1,61 @@
+<html>
+<!--
+     Open the file and submit the URL as file://bitmoji.html?user=BITMOJIID&version=[1-7]
+     Example: file://bitmoji.html?user=99792039934&version=5
+-->
+<body>
+
+    Replace the default value with your Bitmoji ID: <input type="number" name="bid" value="99792039934"><br>
+
+    <br>
+
+    Replace the default value with your version value: <input type="number" name="bversion" value="5"><br>
+
+    <hr width="3">
+
+    <style>
+        * {
+            margin: 0;
+            padding:0;
+        }
+        .avatar {
+            width: 300px;
+            display: inline-block;
+        }
+    </style>
+
+    <div id="all"></div>
+
+    <script type="text/javascript" style="display: none;">
+        var all = document.querySelector("#all");
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const userID = urlParams.get('user');
+        const version = urlParams.get('version');
+
+        function nextImg(i) {
+            var container = document.createElement('div');
+            container.classList.add("avatar");
+            var img = document.createElement('img');
+            var id  = userID+"_"+i+"-s"+version;
+            img.src = "https://render.bitstrips.com/v2/cpanel/10220640-" + id + "-v1.png?transparent=1&width=300";
+            container.appendChild(img);
+
+            var p = document.createElement('p');
+            p.innerText = id;
+            container.appendChild(p);
+
+            all.appendChild(container);
+            console.log(i)
+            if (i==20) {
+                return;
+            } else {
+                setTimeout(() => nextImg(i+1), 500);
+            }
+        }
+
+        nextImg(0);
+    </script>
+
+    </body>
+</html>
