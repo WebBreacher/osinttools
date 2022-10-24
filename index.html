@@ -2,10 +2,6 @@
 <head>
   <title>Backmoji - The Bitmoji Enumerator</title>
   <style>
-    * {
-        margin: 0;
-        padding:0;
-    }
     .avatar {
         width: 300px;
         display: inline-block;
@@ -19,19 +15,31 @@
 
 <body>
 <h1>Backmoji - The Bitmoji Enumerator</h1>
-<p>Backmoji takes a Bitmoji ID, version (usually the number 5), and a maximum value.</p>
-<p>Press the "Grab Images!" button and your browser will make "maximum value" requests for the </p>
-<p>images of that user's Bitmoji. Those images will be displayed below.</p>
-<br><br>
-    <p>Sample Bimoji ID value: 99792039934</p>
-    <p>Version: 5</p>
-    <br>
-    <br>
+<p>Backmoji takes a Bitmoji ID, version (usually the number 5), and a maximum value. Press the "Grab Images!" button and your browser will make "maximum value" requests for the images of that user's Bitmoji. Those images will be displayed below.</p>
 
+<h2>
+    Blog posts that drove this page
+</h2>
+<ul>
+    <li><a href src="https://hatless1der.com/a-snapchat-osint-tip-viewing-bitmoji-changes/" target="_blank">Griffin (Hatless1der Glynn - https://hatless1der.com/a-snapchat-osint-tip-viewing-bitmoji-changes/</a></li>
+    <li><a href src="https://webbreacher.com/2022/10/24/grabbing-old-bitmoji-outfits-with-backmoji/" target="_blank">Micah (WebBreacher) Hoffman - https://webbreacher.com/2022/10/24/grabbing-old-bitmoji-outfits-with-backmoji/</a></li>
+</ul>
+
+<h2>
+    Sample Data
+</h2>
+<p>Want to try the tool but don't have the Bitmoji data from a user profile? Use the data below.</p>
+<ul>
+    <li>Sample Bimoji ID value: <b>99792039934</b></li>
+    <li>Version: <b>5</b></li>
+    <li>Upper value: <b>20</b></li>
+</ul>
+
+<h2>Try the Tool</h2>
     <ul>
-        <li>Replace the default value with your Bitmoji ID: <input type="number" placeholder="99792039934" id="bid"></li>
-        <li>Replace the default value with your version value: <input type="number" id="bversion" placeholder="5"></li>
-        <li>Upper value: <input type="number" id="upperVal" placeholder="20"></li>
+        <li>Replace the default value with your Bitmoji ID: <input type="number" id="bid" size="13" maxlength="13"></li>
+        <li>Replace the default value with your version value: <input type="number" id="bversion" size="3" maxlength="3"></li>
+        <li>Upper value: <input type="number" id="upperVal" size="3" maxlength="3"></li>
     </ul>
     <button type="button" onclick="getInputValue();">Grab Images!</button>
 
