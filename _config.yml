@@ -2,4 +2,24 @@ title: "BACKMOJI"
 description:  "The Bitmoji Avatar History Enumerator"
 #remote_theme: pages-themes/hacker@v0.2.0
 #remote_theme: daattali/beautiful-jekyll
-remote_theme: artemsheludko/fresh
+remote_theme: samarsault/plainwhite-jekyll/
+
+author: WebBreacher
+show_excerpts: false # set to true to show excerpts on the homepage
+
+# Minima date format
+# refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
+sass:
+  sass_dir: _sass
+plainwhite:
+  name: BACKMOJI
+  date_format: "%b %-d, %Y"
+  sitemap: false # set to true to generate sitemap.xml content
+  search: false # set to true to enable searchbar
+  dark_mode: true # set to true to add dark mode toggle
+  html_lang: "en" # set the lang attribute of the <html> tag for the pages. See here for a list of codes: https://www.w3schools.com/tags/ref_country_codes.asp
+
+  social_links:
+    twitter: webbreacher
+    twitter: hatless1der
+
