@@ -1,4 +1,5 @@
 title: "BACKMOJI"
 description:  "The Bitmoji Avatar History Enumerator"
 #remote_theme: pages-themes/hacker@v0.2.0
-remote_theme: daattali/beautiful-jekyll
+#remote_theme: daattali/beautiful-jekyll
+remote_theme: zxixia/jekyll-xixia
