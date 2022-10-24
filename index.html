@@ -1,10 +1,28 @@
 <html>
-<!--
-     Open the file and submit the URL as file://bitmoji.html?user=BITMOJIID&version=[1-7]
-     Example: file://bitmoji.html?user=99792039934&version=5
--->
-<body>
+<head>
+  <title>Backmoji - The Bitmoji Enumerator</title>
+  <style>
+    * {
+        margin: 0;
+        padding:0;
+    }
+    .avatar {
+        width: 300px;
+        display: inline-block;
+    }
+    img {
+      height: 200px;
+      width: auto;
+    }
+  </style>
+</head>
 
+<body>
+<h1>Backmoji - The Bitmoji Enumerator</h1>
+<p>Backmoji takes a Bitmoji ID, version (usually the number 5), and a maximum value.</p>
+<p>Press the "Grab Images!" button and your browser will make "maximum value" requests for the </p>
+<p>images of that user's Bitmoji. Those images will be displayed below.</p>
+<br><br>
     <p>Sample Bimoji ID value: 99792039934</p>
     <p>Version: 5</p>
     <br>
@@ -16,19 +34,6 @@
         <li>Upper value: <input type="number" id="upperVal" placeholder="20"></li>
     </ul>
     <button type="button" onclick="getInputValue();">Grab Images!</button>
-
-      <hr width="3">
-
-    <style>
-        * {
-            margin: 0;
-            padding:0;
-        }
-        .avatar {
-            width: 300px;
-            display: inline-block;
-        }
-    </style>
 
     <div id="all"></div>
 
@@ -47,12 +52,21 @@
                 container.classList.add("avatar");
                 var img = document.createElement('img');
                 var id  = userID+"_"+i+"-s"+version;
-                img.src = "https://render.bitstrips.com/v2/cpanel/10220640-" + id + "-v1.png?transparent=1&width=300";
+                img.src= "https://images.bitmoji.com/3d/avatar/201714142-" + id + "-v1.webp";
                 container.appendChild(img);
+                const textNode = document.createElement("br");
+                container.appendChild(textNode);
 
-                var p = document.createElement('p');
-                p.innerText = id;
-                container.appendChild(p);
+                //var p = document.createElement('p');
+                //p.innerText = "<a href src=" + img.src + " target='_blank'>" + id +"</a>";
+                //container.appendChild(p);
+
+                const x = document.createElement("A");
+                const t = document.createTextNode(id);
+                x.setAttribute("href", img.src);
+                x.setAttribute('target', '_blank');
+                x.appendChild(t);
+                container.appendChild(x);
 
                 all.appendChild(container);
                 console.log(i)
