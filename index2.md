@@ -9,8 +9,6 @@
     }
   </style>
 
-
-# Backmoji - The Bitmoji Enumerator
 Backmoji takes a Bitmoji ID, version (usually the number 5), and a maximum value. Press the "Grab Images!" button and your browser will make "maximum value" requests for the images of that user's Bitmoji. Those images will be displayed below.
 
 ## Blog posts that drove this page
@@ -26,9 +24,9 @@ Want to try the tool but don't have the Bitmoji data from a user profile? Use th
 
 
 ## Try the Tool
-- Replace the default value with your Bitmoji ID: <input type="number" id="bid" size="13" maxlength="13">
-- Replace the default value with your version value: <input type="number" id="bversion" size="3" maxlength="3">
-- Upper value: <input type="number" id="upperVal" size="3" maxlength="3">
+- Replace the default value with your Bitmoji ID: <input type="number" id="bid" size="15">
+- Replace the default value with your version value: <input type="number" id="bversion" size="5">
+- Upper value: <input type="number" id="upperVal" size="5">
 
     <button type="button" onclick="getInputValue();">Grab Images!</button>
 
