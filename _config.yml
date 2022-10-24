@@ -1,4 +1,2 @@
-#remote_theme: pages-themes/tactile
-theme: jekyll-theme-tactile
-
+remote_theme: pages-themes/tactile@v0.2.0
 title: "Backmoji - The Bitmoji Enumerator"
