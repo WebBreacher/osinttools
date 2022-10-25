@@ -7,14 +7,28 @@ Below are links to Griffin's and Micah's blog posts that spurred this tool to be
 ## The Bitmoji URL
 Example URL: `https://images.bitmoji.com/3d/avatar/201714142-99792039934_3-s5-v1.webp`
 
-| Bitmoji ID | Bitmoji Version | S Value |
-| --: | --: | --: |
-| `99792039934` | `3` | `5` |
+<table border="1">
+    <tr>
+        <th>Bitmoji ID</th><th>Bitmoji<br>Version</th><th>S Value</th>
+    </tr>
+    <tr align="center">
+        <td><code>99792039934</code></td><td><code>3</code></td><td><code>5</code></td>
+    </tr>
+</table>
 
 ## Try the Tool
-| Bitmoji ID | Upper value | S Value | Bitmoji size (px) |
-| --: | --: | --: | --: |
-| <input type="text" id="bid"> | <input type="text" id="upperVal" style="width: 50px;"> | <input type="text" value="5" id="sValue" style="width: 50px;" > | <input type="text" id="avatarHeight" value="200" style="width: 70px;"> |
+
+<table border="1">
+    <tr>
+        <th>Bitmoji ID</th><th>Upper<br>value</th><th>S Value</th><th>Bitmoji<br>size (px)</th>
+    </tr>
+    <tr>
+        <td><input type="text" id="bid"></td>
+        <td><input type="text" id="upperVal" style="width: 50px;"></td>
+        <td><input type="text" value="5" id="sValue" style="width: 50px;" ></td>
+        <td><input type="text" id="avatarHeight" value="200" style="width: 70px;"></td>
+    </tr>
+</table>
 
 <button type="button" onclick="getInputValue();">Grab Images!</button>
 
