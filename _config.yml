@@ -1,8 +1,31 @@
-title: "BACKMOJI"
+title: BACKMOJI
 description:  "The Bitmoji Avatar History Enumerator"
 #remote_theme: pages-themes/hacker@v0.2.0
 remote_theme: fongandrew/hydeout
 #remote_theme: samarsault/plainwhite-jekyll/
 
-author: WebBreacher
-show_excerpts: false # set to true to show excerpts on the homepage
+highlighter:      rouge
+
+url:              https://backmoji.osint.ninja
+baseurl:          '/'
+                  # the optional subpath of your site, e.g. "/blog"
+                  # NB: This applies to all pages in your Jekyll site.
+                  # If you want to move just the blog index pages but keep
+                  # other pages at root, see the paginate_path and
+                  # sidebar_blog_link below.
+
+author:
+  name:           'Micah Hoffman'
+  url:            https://twitter.com/webbreacher
+
+paginate:         5
+# paginate_path:    '/page:num'
+                    # Or '/blog/page:num' if you want to move your index pages
+
+plugins:
+  - jekyll-feed
+  - jekyll-gist
+  - jekyll-paginate
+
+# Sidebar link settings
+sidebar_home_link:  false
