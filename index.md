@@ -1,8 +1,8 @@
 BACKMOJI takes a Bitmoji ID, version (usually the number 5), and a maximum value. Press the "Grab Images!" button and your browser will make "maximum value" requests for the images of that user's Bitmoji. Those images will be displayed below.
 
 Below are links to Griffin's and Micah's blog posts that spurred this tool to be created.
-- [Griffin (Hatless1der Glynn - https://hatless1der.com/a-snapchat-osint-tip-viewing-bitmoji-changes/](https://hatless1der.com/a-snapchat-osint-tip-viewing-bitmoji-changes/)
-- [Micah (WebBreacher) Hoffman - https://webbreacher.com/2022/10/24/grabbing-old-bitmoji-outfits-with-BACKMOJI/](https://webbreacher.com/2022/10/24/grabbing-old-bitmoji-outfits-with-BACKMOJI/)
+- [Griffin (Hatless1der) Glynn](https://twitter.com/hatless1der) - [https://hatless1der.com/a-snapchat-osint-tip-viewing-bitmoji-changes/](https://hatless1der.com/a-snapchat-osint-tip-viewing-bitmoji-changes/)
+- [Micah (WebBreacher) Hoffman](https://twitter.com/webbreacher) - [https://webbreacher.com/2022/10/24/grabbing-old-bitmoji-outfits-with-BACKMOJI/](https://webbreacher.com/2022/10/24/grabbing-old-bitmoji-outfits-with-BACKMOJI/)
 
 ## The Bitmoji URL
 Example URL: `https://images.bitmoji.com/3d/avatar/201714142-99792039934_3-s5-v1.webp`
