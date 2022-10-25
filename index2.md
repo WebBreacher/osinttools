@@ -1,14 +1,3 @@
-  <style>
-    .avatar {
-        width: 300px;
-        display: inline-block;
-    }
-    img {
-      height: 200px;
-      width: auto;
-    }
-  </style>
-
 BACKMOJI takes a Bitmoji ID, version (usually the number 5), and a maximum value. Press the "Grab Images!" button and your browser will make "maximum value" requests for the images of that user's Bitmoji. Those images will be displayed below.
 
 ## Blog posts that drove this page
