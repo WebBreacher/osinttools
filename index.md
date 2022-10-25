@@ -10,12 +10,14 @@ Want to try the tool but don't have the Bitmoji data from a user profile? Use th
 - Sample Bitmoji ID value: `99792039934`
 - Version: `5`
 - Upper value: `20`
+- Bitmoji size (pixels): `200`
 
 
 ## Try the Tool
 - Replace the default value with your Bitmoji ID: <input type="number" id="bid" size="15">
-- Replace the default value with your version value: <input type="number" id="bversion" size="5">
+- Replace the default value with your version value: <input type="number" id="bversion" value="5" size="5">
 - Upper value: <input type="number" id="upperVal" size="5">
+- Bitmoji height (px): <input type="number" id="avatarHeight" value="200" size="4">
 
     <button type="button" onclick="getInputValue();">Grab Images!</button>
 
@@ -28,23 +30,29 @@ Want to try the tool but don't have the Bitmoji data from a user profile? Use th
             var version = document.getElementById("bversion").value;
             var upperValue = document.getElementById("upperVal").value;
 
-           var all = document.querySelector("#all");
-            const queryString = window.location.search;
+            // Set Image size
+            var avatarHeight = document.getElementById('avatarHeight').value;
+            if(avatarHeight && (avatarHeight > 10)) {
+                currentAvatarHeight = avatarHeight;
+            } else {
+                currentAvatarHeight = "200";
+            }
+
+            var all = document.querySelector("#all");
+                const queryString = window.location.search;
 
             function nextImg(i) {
                 var container = document.createElement('div');
                 container.classList.add("avatar");
                 var img = document.createElement('img');
+                img.height = currentAvatarHeight;
                 var id  = userID+"_"+i+"-s"+version;
                 img.src= "https://images.bitmoji.com/3d/avatar/201714142-" + id + "-v1.webp";
                 container.appendChild(img);
                 const textNode = document.createElement("br");
                 container.appendChild(textNode);
 
-                //var p = document.createElement('p');
-                //p.innerText = "<a href src=" + img.src + " target='_blank'>" + id +"</a>";
-                //container.appendChild(p);
-
+                // Make the hyperlinked text below image
                 const x = document.createElement("A");
                 const t = document.createTextNode(id);
                 x.setAttribute("href", img.src);
