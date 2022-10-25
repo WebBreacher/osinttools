@@ -1,25 +1,6 @@
 title: BACKMOJI
 description:  "The Bitmoji Avatar History Enumerator"
-#remote_theme: pages-themes/hacker@v0.2.0
-remote_theme: artemsheludko/fresh
+remote_theme: pages-themes/hacker@v0.2.0
 #remote_theme: samarsault/plainwhite-jekyll/
 
-
-permalink: ':title/'
-baseurl: "/" # the subpath of your site, e.g. /blog
 url: "backmoji.osint.ninja" # the base hostname & protocol for your site, e.g. http://example.com
-
-# Social
-twitter: WebBreacher
-github: WebBreacher
-
-
-# Paginate
-paginate: 5
-paginate_path: /page:num/
-
-# Build settings
-markdown: kramdown
-gems:
-  - jekyll-feed
-  - jekyll-paginate
