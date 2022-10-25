@@ -1,74 +1,71 @@
 BACKMOJI takes a Bitmoji ID, version (usually the number 5), and a maximum value. Press the "Grab Images!" button and your browser will make "maximum value" requests for the images of that user's Bitmoji. Those images will be displayed below.
 
-## Blog posts that drove this page
+Below are links to Griffin's and Micah's blog posts that spurred this tool to be created.
 - [Griffin (Hatless1der Glynn - https://hatless1der.com/a-snapchat-osint-tip-viewing-bitmoji-changes/](https://hatless1der.com/a-snapchat-osint-tip-viewing-bitmoji-changes/)
 - [Micah (WebBreacher) Hoffman - https://webbreacher.com/2022/10/24/grabbing-old-bitmoji-outfits-with-BACKMOJI/](https://webbreacher.com/2022/10/24/grabbing-old-bitmoji-outfits-with-BACKMOJI/)
 
+## The Bitmoji URL
+Example URL: `https://images.bitmoji.com/3d/avatar/201714142-99792039934_3-s5-v1.webp`
 
-## Sample Data
-Want to try the tool but don't have the Bitmoji data from a user profile? Use the data below.
-- Sample Bitmoji ID value: `99792039934`
-- Version: `5`
-- Upper value: `20`
-- Bitmoji size (pixels): `200`
-
+| Bitmoji ID | Bitmoji Version | S Value |
+| --: | --: | --: |
+| `99792039934` | `3` | `5` |
 
 ## Try the Tool
-- Replace the default value with your Bitmoji ID: <input type="number" id="bid" size="15">
-- Replace the default value with your version value: <input type="number" id="bversion" value="5" size="5">
-- Upper value: <input type="number" id="upperVal" size="5">
-- Bitmoji height (px): <input type="number" id="avatarHeight" value="200" size="4">
+| Bitmoji ID | Upper value | S Value | Bitmoji size (px) |
+| --: | --: | --: | --: |
+| <input type="text" id="bid"> | <input type="text" id="upperVal" style="width: 50px;"> | <input type="text" value="5" id="sValue" style="width: 50px;" > | <input type="text" id="avatarHeight" value="200" style="width: 70px;"> |
 
-    <button type="button" onclick="getInputValue();">Grab Images!</button>
+<button type="button" onclick="getInputValue();">Grab Images!</button>
 
-    <div id="all"></div>
+<div id="all"></div>
 
-    <script type="text/javascript" style="display: none;">
-        function getInputValue(){
-            // Selecting the input element and get its value
-            var userID = document.getElementById("bid").value;
-            var version = document.getElementById("bversion").value;
-            var upperValue = document.getElementById("upperVal").value;
+<script type="text/javascript" style="display: none;">
+    function getInputValue(){
+        // Selecting the input element and get its value
+        var userID = document.getElementById("bid").value;
+        var sValue = document.getElementById("sValue").value;
+        var upperValue = document.getElementById("upperVal").value;
 
-            // Set Image size
-            var avatarHeight = document.getElementById('avatarHeight').value;
-            if(avatarHeight && (avatarHeight > 10)) {
-                currentAvatarHeight = avatarHeight;
-            } else {
-                currentAvatarHeight = "200";
-            }
-
-            var all = document.querySelector("#all");
-                const queryString = window.location.search;
-
-            function nextImg(i) {
-                var container = document.createElement('div');
-                container.classList.add("avatar");
-                var img = document.createElement('img');
-                img.height = currentAvatarHeight;
-                var id  = userID+"_"+i+"-s"+version;
-                img.src= "https://images.bitmoji.com/3d/avatar/201714142-" + id + "-v1.webp";
-                container.appendChild(img);
-                const textNode = document.createElement("br");
-                container.appendChild(textNode);
-
-                // Make the hyperlinked text below image
-                const x = document.createElement("A");
-                const t = document.createTextNode(id);
-                x.setAttribute("href", img.src);
-                x.setAttribute('target', '_blank');
-                x.appendChild(t);
-                container.appendChild(x);
-
-                all.appendChild(container);
-                console.log(i)
-                if (i==upperValue) {
-                    return;
-                } else {
-                    setTimeout(() => nextImg(i+1), 500);
-                }
-            }
-
-            nextImg(0);
+        // Set Image size
+        var avatarHeight = document.getElementById('avatarHeight').value;
+        if(avatarHeight && (avatarHeight > 10)) {
+            currentAvatarHeight = avatarHeight;
+        } else {
+            currentAvatarHeight = "200";
         }
-    </script>
+
+        var all = document.querySelector("#all");
+            const queryString = window.location.search;
+
+        function nextImg(i) {
+            var container = document.createElement('div');
+            container.classList.add("avatar");
+            var img = document.createElement('img');
+            img.height = currentAvatarHeight;
+            var id  = userID+"_"+i+"-s"+sValue;
+            img.src= "https://images.bitmoji.com/3d/avatar/201714142-" + id + "-v1.webp";
+            container.appendChild(img);
+            const textNode = document.createElement("br");
+            container.appendChild(textNode);
+
+            // Make the hyperlinked text below image
+            const x = document.createElement("A");
+            const t = document.createTextNode(id);
+            x.setAttribute("href", img.src);
+            x.setAttribute('target', '_blank');
+            x.appendChild(t);
+            container.appendChild(x);
+
+            all.appendChild(container);
+            console.log(i)
+            if (i==upperValue) {
+                return;
+            } else {
+                setTimeout(() => nextImg(i+1), 500);
+            }
+        }
+
+        nextImg(0);
+    }
+</script>

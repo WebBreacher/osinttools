@@ -9,38 +9,52 @@
     img {
       width: auto;
     }
+    input {
+        text-align: center;
+    }
   </style>
 </head>
 
 <body>
 <h1>Backmoji - The Bitmoji Enumerator</h1>
 <p>Backmoji takes a Bitmoji ID, version (usually the number 5), and a maximum value. Press the "Grab Images!" button and your browser will make "maximum value" requests for the images of that user's Bitmoji. Those images will be displayed below.</p>
-
-<h2>
-    Blog posts that drove this page
-</h2>
+<p>Below are links to Griffin's and Micah's blog posts that spurred this tool to be created.</p>
 <ul>
     <li><a href src="https://hatless1der.com/a-snapchat-osint-tip-viewing-bitmoji-changes/" target="_blank">Griffin (Hatless1der Glynn - https://hatless1der.com/a-snapchat-osint-tip-viewing-bitmoji-changes/</a></li>
     <li><a href src="https://webbreacher.com/2022/10/24/grabbing-old-bitmoji-outfits-with-backmoji/" target="_blank">Micah (WebBreacher) Hoffman - https://webbreacher.com/2022/10/24/grabbing-old-bitmoji-outfits-with-backmoji/</a></li>
 </ul>
 
-<h2>
-    Sample Data
-</h2>
-<p>Want to try the tool but don't have the Bitmoji data from a user profile? Use the data below.</p>
-<ul>
-    <li>Sample Bimoji ID value: <b>99792039934</b></li>
-    <li>Version: <b>5</b></li>
-    <li>Upper value: <b>20</b></li>
-</ul>
+<h2>The Bitmoji URL</h2>
+Example URL: <code>https://images.bitmoji.com/3d/avatar/201714142-99792039934_3-s5-v1.webp</code>
+
+<table border="3">
+    <tr>
+        <th>Bitmoji ID</th><th>Bitmoji<br>Version</th><th>S Value</th>
+    </tr>
+    <tr align="center">
+        <td><code>99792039934</code></td><td><code>3</code></td><td><code>5</code></td>
+    </tr>
+</table>
 
 <h2>Try the Tool</h2>
-    <ul>
+<!--    <ul>
         <li>Replace the default value with your Bitmoji ID: <input type="number" id="bid" size="13"></li>
         <li>Replace the default value with your version value: <input type="number" value="5" id="bversion" size="3" ></li>
         <li>Upper value: <input type="number" id="upperVal" size="3" ></li>
         <li>Bitmoji height (px): <input type="number" id="avatarHeight" value="200" size="4"></li>
-    </ul>
+    </ul> -->
+<table border="3">
+    <tr>
+        <th>Bitmoji ID</th><th>Upper<br>value</th><th>S Value</th><th>Bitmoji<br>size (px)</th>
+    </tr>
+    <tr>
+        <td><input type="text" id="bid"></td>
+        <td><input type="text" id="upperVal" style="width: 50px;"></td>
+        <td><input type="text" value="5" id="sValue" style="width: 50px;" ></td>
+        <td><input type="text" id="avatarHeight" value="200" style="width: 70px;"></td>
+    </tr>
+</table>
+
     <button type="button" onclick="getInputValue();">Grab Images!</button>
 
     <div id="all"></div>
@@ -49,7 +63,7 @@
         function getInputValue(){
             // Selecting the input element and get its value
             var userID = document.getElementById("bid").value;
-            var version = document.getElementById("bversion").value;
+            var sValue = document.getElementById("sValue").value;
             var upperValue = document.getElementById("upperVal").value;
 
             // Set Image size
@@ -68,7 +82,7 @@
                 container.classList.add("avatar");
                 var img = document.createElement('img');
                 img.height = currentAvatarHeight;
-                var id  = userID+"_"+i+"-s"+version;
+                var id  = userID+"_"+i+"-s"+sValue;
                 img.src= "https://images.bitmoji.com/3d/avatar/201714142-" + id + "-v1.webp";
                 container.appendChild(img);
                 const textNode = document.createElement("br");
