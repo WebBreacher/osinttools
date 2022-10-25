@@ -13,7 +13,6 @@ sass:
   sass_dir: _sass
 plainwhite:
   name: BACKMOJI
-  date_format: "%b %-d, %Y"
   sitemap: false # set to true to generate sitemap.xml content
   search: false # set to true to enable searchbar
   dark_mode: true # set to true to add dark mode toggle
@@ -21,5 +20,5 @@ plainwhite:
 
   social_links:
     twitter: webbreacher
-    twitter: hatless1der
+    facebook: hatless1der
 
