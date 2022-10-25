@@ -11,12 +11,16 @@ Example URL: `https://images.bitmoji.com/3d/avatar/201714142-99792039934_3-s5-v1
 ## Try the Tool
 
 <table border="1">
-    <tr><th>Bitmoji ID</th><th>Upper<br>value</th><th>S Value</th><th>Bitmoji<br>size (px)</th></tr>
     <tr>
-        <td><input title="This is the Bitmoji ID of the user." type="text" id="bid"></td>
-        <td><input title="How many requests for images do you want to make?" type="text" id="upperVal" style="width: 50px;"></td>
-        <td><input title="This is the value of the 's#' in the URL." type="text" value="5" id="sValue" style="width: 50px;" ></td>
-        <td><input title="You determine the height of the resulting Bitmojis here." type="text" id="avatarHeight" value="200" style="width: 70px;"></td>
+        <th class="tooltip">Bitmoji ID<span class="tooltiptext">This is the Bitmoji ID of the user.</span></th>
+        <th class="tooltip">Upper<br>value<span class="tooltiptext">How many requests for images do you want to make?</span></th>
+        <th class="tooltip">S Value<span class="tooltiptext">This is the value of the "_S#" in the URL.
+        <th class="tooltip">Bitmoji<br>size (px)<span class="tooltiptext">You determine the height of the resulting Bitmojis here.</span></th></tr>
+    <tr>
+        <td><input type="text" id="bid"></td>
+        <td><input type="text" id="upperVal" style="width: 50px;"></td>
+        <td><input type="text" value="5" id="sValue" style="width: 50px;" ></td>
+        <td><input type="text" id="avatarHeight" value="200" style="width: 70px;"></td>
     </tr>
 </table>
 
