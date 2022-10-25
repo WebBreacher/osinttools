@@ -12,7 +12,7 @@ Example URL: `https://images.bitmoji.com/3d/avatar/201714142-99792039934_3-s5-v1
         <th>Bitmoji ID</th><th>Bitmoji<br>Version</th><th>S Value</th>
     </tr>
     <tr align="center">
-        <td><code>99792039934</code></td><td><code>3</code></td><td><code>5</code></td>
+        <td>`99792039934`</td><td>`3`</td><td>`5`</td>
     </tr>
 </table>
 
