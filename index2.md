@@ -7,7 +7,7 @@ BACKMOJI takes a Bitmoji ID, version (usually the number 5), and a maximum value
 
 ## Sample Data
 Want to try the tool but don't have the Bitmoji data from a user profile? Use the data below.
-- Sample Bimoji ID value: `99792039934`
+- Sample Bitmoji ID value: `99792039934`
 - Version: `5`
 - Upper value: `20`
 
