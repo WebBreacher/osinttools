@@ -18,8 +18,8 @@ Example URL: `https://images.bitmoji.com/3d/avatar/201714142-99792039934_3-s5-v1
         <th class="tooltip">Bitmoji<br>size (px) <span class="tooltiptext">You determine the height of the resulting Bitmojis here.</span></th>
     </tr>
     <tr>
-        <td><input type="text" id="bid"></td>
-        <td><input type="text" id="upperVal" style="width: 50px;"></td>
+        <td><p class="tooltip">Bitmoji ID <span class="tooltiptext">This is the Bitmoji ID of the user.</span></p><input type="text" id="bid"></td>
+        <td><p class="tooltip">Upper<br>value</p><span class="tooltiptext">How many requests for images do you want to make?</span><input type="text" id="upperVal" style="width: 50px;"></td>
         <td><input type="text" id="sValue" style="width: 50px;" value="5" ></td>
         <td><input type="text" id="avatarHeight" value="200" style="width: 70px;"></td>
     </tr>
