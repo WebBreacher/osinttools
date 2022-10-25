@@ -4,28 +4,22 @@ description:  "The Bitmoji Avatar History Enumerator"
 remote_theme: fongandrew/hydeout
 #remote_theme: samarsault/plainwhite-jekyll/
 
-highlighter:      rouge
 
-url:              https://backmoji.osint.ninja
-baseurl:          '/'
-                  # the optional subpath of your site, e.g. "/blog"
-                  # NB: This applies to all pages in your Jekyll site.
-                  # If you want to move just the blog index pages but keep
-                  # other pages at root, see the paginate_path and
-                  # sidebar_blog_link below.
+permalink: ':title/'
+baseurl: "/" # the subpath of your site, e.g. /blog
+url: "backmoji.osint.ninja" # the base hostname & protocol for your site, e.g. http://example.com
 
-author:
-  name:           'Micah Hoffman'
-  url:            https://twitter.com/webbreacher
+# Social
+twitter: WebBreacher
+github: WebBreacher
 
-paginate:         5
-# paginate_path:    '/page:num'
-                    # Or '/blog/page:num' if you want to move your index pages
 
-plugins:
+# Paginate
+paginate: 5
+paginate_path: /page:num/
+
+# Build settings
+markdown: kramdown
+gems:
   - jekyll-feed
-  - jekyll-gist
   - jekyll-paginate
-
-# Sidebar link settings
-sidebar_home_link:  false
