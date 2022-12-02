@@ -27,7 +27,7 @@ Example URL: `https://images.bitmoji.com/3d/avatar/201714142-99792039934_3-s5-v1
     </tr>
 </table>
 
-<button type="button" onclick="getInputValue();">Grab Images!</button>
+<button type="button" onclick="getInputValue();">Grab Images (Front and Side views!</button>
 
 <div id="all"></div>
 
