@@ -52,18 +52,23 @@ Example URL: `https://images.bitmoji.com/3d/avatar/201714142-99792039934_3-s5-v1
         function nextImg(i) {
             var container = document.createElement('div');
             container.classList.add("avatar");
-            var img = document.createElement('img');
-            img.height = currentAvatarHeight;
+            var imgFront = document.createElement('img');
+            var imgSide = document.createElement('img');
+            imgFront.height = currentAvatarHeight;
+            imgSide.height = currentAvatarHeight;
+
             var id  = userID+"_"+i+"-s"+sValue;
-            img.src= "https://images.bitmoji.com/3d/avatar/201714142-" + id + "-v1.webp";
-            container.appendChild(img);
+            imgFront.src= "https://images.bitmoji.com/3d/avatar/201714142-" + id + "-v1.webp";
+            imgSide.src= "https://images.bitmoji.com/3d/avatar/582513516-" + id + "-v1.webp";
+            container.appendChild(imgFront);
+            container.appendChild(imgSide);
             const textNode = document.createElement("br");
             container.appendChild(textNode);
 
-            // Make the hyperlinked text below image
+            // Make the hyperlinked text below image for front image
             const x = document.createElement("A");
-            const t = document.createTextNode(id);
-            x.setAttribute("href", img.src);
+            const t = document.createTextNode('Version: '+i);
+            x.setAttribute("href", imgFront.src);
             x.setAttribute('target', '_blank');
             x.appendChild(t);
             container.appendChild(x);

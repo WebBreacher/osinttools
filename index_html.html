@@ -12,48 +12,29 @@
     input {
         text-align: center;
     }
+    div {
+        text-align: center;
+    }
   </style>
 </head>
 
 <body>
-<h1>Backmoji - The Bitmoji Enumerator</h1>
-<p>Backmoji takes a Bitmoji ID, version (usually the number 5), and a maximum value. Press the "Grab Images!" button and your browser will make "maximum value" requests for the images of that user's Bitmoji. Those images will be displayed below.</p>
-<p>Below are links to Griffin's and Micah's blog posts that spurred this tool to be created.</p>
-<ul>
-    <li><a href src="https://hatless1der.com/a-snapchat-osint-tip-viewing-bitmoji-changes/" target="_blank">Griffin (Hatless1der Glynn - https://hatless1der.com/a-snapchat-osint-tip-viewing-bitmoji-changes/</a></li>
-    <li><a href src="https://webbreacher.com/2022/10/24/grabbing-old-bitmoji-outfits-with-backmoji/" target="_blank">Micah (WebBreacher) Hoffman - https://webbreacher.com/2022/10/24/grabbing-old-bitmoji-outfits-with-backmoji/</a></li>
-</ul>
-
-<h2>The Bitmoji URL</h2>
-Example URL: <code>https://images.bitmoji.com/3d/avatar/201714142-99792039934_3-s5-v1.webp</code>
-
-<table border="3">
-    <tr>
-        <th>Bitmoji ID</th><th>Bitmoji<br>Version</th><th>S Value</th>
-    </tr>
-    <tr align="center">
-        <td><code>99792039934</code></td><td><code>3</code></td><td><code>5</code></td>
-    </tr>
-</table>
-
-<h2>Try the Tool</h2>
-<!--    <ul>
-        <li>Replace the default value with your Bitmoji ID: <input type="number" id="bid" size="13"></li>
-        <li>Replace the default value with your version value: <input type="number" value="5" id="bversion" size="3" ></li>
-        <li>Upper value: <input type="number" id="upperVal" size="3" ></li>
-        <li>Bitmoji height (px): <input type="number" id="avatarHeight" value="200" size="4"></li>
-    </ul> -->
-<table border="3">
-    <tr>
-        <th>Bitmoji ID</th><th>Upper<br>value</th><th>S Value</th><th>Bitmoji<br>size (px)</th>
-    </tr>
-    <tr>
-        <td><input type="text" id="bid"></td>
-        <td><input type="text" id="upperVal" style="width: 50px;"></td>
-        <td><input type="text" value="5" id="sValue" style="width: 50px;" ></td>
-        <td><input type="text" id="avatarHeight" value="200" style="width: 70px;"></td>
-    </tr>
-</table>
+    <table border="1">
+        <tr>
+            <td>
+                <p class="tooltip">Bitmoji ID <span class="tooltiptext">This is the Bitmoji ID of the user.</span></p><br>
+                <input type="text" id="bid"></td>
+            <td>
+                <p class="tooltip">Upper<br>value <span class="tooltiptext">How many requests for images do you want to make?</span></p><br>
+                <input type="text" id="upperVal" style="width: 50px;"></td>
+            <td>
+                <p class="tooltip">S Value <span class="tooltiptext">This is the value of the "_S#" in the URL.</span></p><br>
+                <input type="text" id="sValue" style="width: 50px;" value="5" ></td>
+            <td>
+                <p class="tooltip">Bitmoji<br>size (px) <span class="tooltiptext">You determine the height of the resulting Bitmojis here.</span></p><br>
+                <input type="text" id="avatarHeight" value="200" style="width: 70px;"></td>
+        </tr>
+    </table>
 
     <button type="button" onclick="getInputValue();">Grab Images!</button>
 
@@ -80,18 +61,23 @@ Example URL: <code>https://images.bitmoji.com/3d/avatar/201714142-99792039934_3-
             function nextImg(i) {
                 var container = document.createElement('div');
                 container.classList.add("avatar");
-                var img = document.createElement('img');
-                img.height = currentAvatarHeight;
+                var imgFront = document.createElement('img');
+                var imgSide = document.createElement('img');
+                imgFront.height = currentAvatarHeight;
+                imgSide.height = currentAvatarHeight;
+
                 var id  = userID+"_"+i+"-s"+sValue;
-                img.src= "https://images.bitmoji.com/3d/avatar/201714142-" + id + "-v1.webp";
-                container.appendChild(img);
+                imgFront.src= "https://images.bitmoji.com/3d/avatar/201714142-" + id + "-v1.webp";
+                imgSide.src= "https://images.bitmoji.com/3d/avatar/582513516-" + id + "-v1.webp";
+                container.appendChild(imgFront);
+                container.appendChild(imgSide);
                 const textNode = document.createElement("br");
                 container.appendChild(textNode);
 
-                // Make the hyperlinked text below image
+                // Make the hyperlinked text below image for front image
                 const x = document.createElement("A");
-                const t = document.createTextNode(id);
-                x.setAttribute("href", img.src);
+                const t = document.createTextNode('Version: '+i);
+                x.setAttribute("href", imgFront.src);
                 x.setAttribute('target', '_blank');
                 x.appendChild(t);
                 container.appendChild(x);
@@ -108,6 +94,5 @@ Example URL: <code>https://images.bitmoji.com/3d/avatar/201714142-99792039934_3-
             nextImg(0);
         }
     </script>
-
     </body>
 </html>
