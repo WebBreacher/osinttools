@@ -30,7 +30,7 @@ Example URL: `https://images.bitmoji.com/3d/avatar/201714142-99792039934_3-s5-v1
 <button type="button" onclick="getInputValue();">Grab Images!</button>
 
 <h2>Bitmoji images below (front and side views)</h2>
-<div id="all"></div>
+<div class="centered" id="all"></div>
 
 <script type="text/javascript" style="display: none;">
     function getInputValue(){
